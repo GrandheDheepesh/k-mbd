@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Ma ❤️</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+overflow:hidden;
+color:white;
+background:black;
+}
+
+.page{
+width:100vw;
+height:100vh;
+display:none;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+text-align:center;
+background:
+linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),
+url('bg.jpeg');
+background-size:cover;
+background-position:center;
+position:absolute;
+top:0;
+left:0;
+animation:fadeIn .8s;
+}
+
+.active{
+display:flex;
+}
+
+@keyframes fadeIn{
+from{opacity:0}
+to{opacity:1}
+}
+
+h1{
+font-size:3rem;
+margin-bottom:20px;
+text-shadow:0 0 20px white;
+}
+
+button{
+padding:14px 30px;
+border:none;
+border-radius:40px;
+cursor:pointer;
+font-size:18px;
+margin:10px;
+transition:.3s;
+font-weight:bold;
+}
+
+button:hover{
+transform:scale(1.08);
+}
+
+.yes-btn{
+background:#00d26a;
+color:white;
+}
+
+.no-btn{
+background:#ff3c6f;
+color:white;
+position:absolute;
+}
+
+.next-btn,
+.prev-btn{
+background:white;
+color:#222;
+}
+
+.book{
+width:90%;
+max-width:1100px;
+height:550px;
+display:flex;
+border-radius:25px;
+overflow:hidden;
+background:rgba(255,255,255,.15);
+backdrop-filter:blur(10px);
+box-shadow:0 0 30px rgba(255,255,255,.3);
+}
+
+.left-page{
+width:50%;
+padding:20px;
+}
+
+.right-page{
+width:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:40px;
+font-size:1.4rem;
+line-height:1.8;
+}
+
+.left-page img{
+width:100%;
+height:100%;
+object-fit:cover;
+border-radius:20px;
+}
+
+.controls{
+margin-top:20px;
+}
+
+/* NEW CAKE */
+
+.cake{
+    font-size:170px;
+    cursor:pointer;
+    transition:0.4s;
+    user-select:none;
+}
+
+.cake:hover{
+    transform:scale(1.1);
+}
+
+/* SLIDESHOW */
+
+.slideshow{
+width:85%;
+max-width:900px;
+height:550px;
+overflow:hidden;
+border-radius:25px;
+box-shadow:0 0 25px rgba(255,255,255,.4);
+}
+
+.slideshow img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:1s;
+}
+
+/* FINAL PAGE */
+
+.final-box{
+max-width:900px;
+padding:40px;
+border-radius:25px;
+background:rgba(255,255,255,.15);
+backdrop-filter:blur(10px);
+}
+
+.final-box p{
+font-size:1.4rem;
+line-height:2;
+}
+
+/* CONFETTI */
+
+.confetti{
+position:fixed;
+top:-20px;
+width:10px;
+height:10px;
+animation:fall linear forwards;
+}
+
+@keyframes fall{
+to{
+transform:translateY(110vh) rotate(720deg);
+}
+}
+
+.heart{
+position:fixed;
+bottom:-50px;
+font-size:28px;
+animation:floatUp 5s linear forwards;
+}
+
+
+@keyframes floatUp{
+to{
+transform:translateY(-120vh);
+opacity:0;
+}
+}
+
+.floating-cake{
+position:fixed;
+bottom:-60px;
+font-size:30px;
+animation:floatCake 8s linear forwards;
+pointer-events:none;
+z-index:1;
+}
+
+@keyframes floatCake{
+to{
+transform:translateY(-120vh) rotate(360deg);
+opacity:0;
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<audio id="music" loop>
+<source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- PAGE 1 -->
+
+<section id="page1" class="page active">
+
+<h1>🎁 Are You Ready For The Surprise? 🎁</h1>
+
+<div>
+<button class="yes-btn" onclick="startSurprise()">YES ❤️</button>
+<button id="noBtn" class="no-btn">NO 😜</button>
+</div>
+
+</section>
+
+<!-- PAGE 2 -->
+
+<section id="page2" class="page">
+
+<h1> This is the surprise for The strongest woman</h1>
+
+<div class="book">
+
+<div class="left-page">
+<img id="bookImage" src="photo1.jpeg">
+</div>
+
+<div class="right-page">
+<p id="bookText">
+Dear Ma ❤️
+
+From my very first step to every step I take today,
+you have always been beside me.
+
+Your love, care, and support have been my greatest strength.
+
+Thank you for being the wonderful mother that you are.
+</p>
+</div>
+
+</div>
+
+<div class="controls">
+<button class="prev-btn" onclick="prevBook()">Prev</button>
+<button class="next-btn" onclick="nextBook()">Next</button>
+</div>
+
+</section>
+
+<!-- PAGE 3 -->
+
+<section id="page3" class="page">
+
+<h1>🎂 Cut The Birthday Cake 🎂</h1>
+
+<div class="cake" onclick="cutCake()" id="cake">
+    🎂
+</div>
+
+<p id="cakeText" style="margin-top:25px;font-size:22px">
+    Click the cake to cut it!
+</p>
+
+</section>
+
+<!-- PAGE 4 -->
+
+<section id="page4" class="page">
+
+<h1>📸 Beautiful Memories</h1>
+
+<div class="slideshow">
+<img id="slideImage" src="slide1.jpeg">
+</div>
+
+<p style="margin-top:20px;font-size:20px;">
+Enjoy the memories ❤️
+</p>
+
+</section>
+
+<!-- PAGE 5 -->
+
+<section id="page5" class="page">
+
+<div class="final-box">
+
+<h1>🎉 Happy Birthday Ma ❤️ 🎉</h1>
+
+<p>
+Dear Ma,<br><br>
+
+Thank you ma for your endless love, care, and support.
+
+You are the strongest and most wonderful person in my life.
+
+Wishing you happiness, good health, and all the joy you deserve. 
+
+Your love and sacrifices have shaped my life in countless ways.
+
+I am grateful for everything you do. May your day be filled with love,
+laughter, and beautiful memories.
+ 
+Wishing you a day full of happiness, smiles, and all your favorite things. 
+ 
+Love you ma, Love you always.<br>
+
+🎂❤️ Happy Birthday Once Again ❤️🎂
+</p>
+
+<br>
+
+<button class="next-btn"
+onclick="celebrateForever()">
+Celebrate 🎉
+</button>
+
+</div>
+
+</section>
+
+<script>
+/* PAGE NAVIGATION */
+
+function showPage(id){
+
+document.querySelectorAll(".page")
+.forEach(page=>page.classList.remove("active"));
+
+document.getElementById(id)
+.classList.add("active");
+
+}
+
+/* START */
+
+function startSurprise(){
+
+document.getElementById("music").play();
+
+showPage("page2");
+
+createConfetti(150);
+
+}
+
+/* MOVING NO BUTTON */
+
+const noBtn=document.getElementById("noBtn");
+
+function moveNoButton(){
+
+const x=Math.random()*
+(window.innerWidth-150);
+
+const y=Math.random()*
+(window.innerHeight-100);
+
+noBtn.style.left=x+"px";
+noBtn.style.top=y+"px";
+
+}
+
+noBtn.addEventListener(
+"mouseover",
+moveNoButton
+);
+
+noBtn.addEventListener(
+"click",
+moveNoButton
+);
+
+/* BOOK */
+
+const bookPages=[
+
+{
+img:"photo1.jpeg",
+text:`Dear Ma ❤️
+
+From my very first step to every step I take today,
+you have always been beside me.
+
+Your love, care, and support have been my greatest strength.`
+},
+
+{
+img:"photo2.jpeg",
+text:`Ma ❤️
+
+No matter how difficult life gets,
+your smile and encouragement always give me courage.
+
+You have sacrificed so much to make my life better,
+and I am grateful for everything you do.`
+},
+
+{
+img:"photo3.jpeg",
+text:`My Strongest Woman ❤️
+
+You are not only my mother,
+but also my teacher, guide, and inspiration.
+
+Your kindness, patience, and strength
+teach me something valuable every day.`
+},
+
+{
+img:"photo4.jpeg",
+text:`Happy Birthday Ma ❤️
+
+Words can never fully express
+how much you mean to me.
+
+I am proud to be your son.
+
+Love you forever ❤️`
+}
+
+];
+
+
+let currentBook=0;
+
+function updateBook(){
+
+document.getElementById("bookImage").src=
+bookPages[currentBook].img;
+
+document.getElementById("bookText").innerHTML=
+bookPages[currentBook].text;
+
+}
+
+function nextBook(){
+
+createConfetti(120);
+
+if(currentBook<
+bookPages.length-1){
+
+currentBook++;
+
+updateBook();
+
+}else{
+
+showPage("page3");
+
+}
+
+}
+
+function prevBook(){
+
+if(currentBook>0){
+
+currentBook--;
+
+updateBook();
+
+createConfetti(80);
+
+}
+
+}
+
+/* CAKE CUTTING */
+
+function cutCake(){
+
+    const cake=document.getElementById("cake");
+
+    if(cake.dataset.cut==="true")
+        return;
+
+    cake.dataset.cut="true";
+
+    cake.innerHTML="🍰";
+
+    document.getElementById("cakeText").innerHTML=
+    "Yayyyy! Cake has been cut ❤️";
+
+    createConfetti(700);
+
+    setTimeout(()=>{
+    createConfetti(500);
+    },500);
+
+    setTimeout(()=>{
+    createConfetti(500);
+    },1000);
+
+    setTimeout(()=>{
+
+        showPage("page4");
+
+        startSlideshow();
+
+    },2500);
+
+}
+
+/* SLIDESHOW */
+
+const slides=[
+
+"slide1.jpeg",
+"slide2.jpeg",
+"slide3.jpeg",
+"slide4.jpeg",
+"slide5.jpeg",
+"slide6.jpeg",
+"slide7.jpeg",
+"slide8.jpeg",
+"slide9.jpeg"
+
+];
+
+let currentSlide=0;
+let slideshowStarted=false;
+
+function updateSlide(){
+
+document.getElementById(
+"slideImage"
+).src=slides[currentSlide];
+
+}
+
+function startSlideshow(){
+
+if(slideshowStarted)
+return;
+
+slideshowStarted=true;
+
+updateSlide();
+
+const slideshowInterval=
+setInterval(()=>{
+
+currentSlide++;
+
+if(currentSlide>=slides.length){
+
+clearInterval(
+slideshowInterval
+);
+
+showPage("page5");
+
+createConfetti(500);
+
+return;
+
+}
+
+updateSlide();
+
+},2500);
+
+}
+
+/* CONFETTI */
+
+function createConfetti(amount){
+
+for(let i=0;i<amount;i++){
+
+const confetti=
+document.createElement("div");
+
+confetti.classList.add(
+"confetti"
+);
+
+confetti.style.left=
+Math.random()*100+"vw";
+
+confetti.style.background=
+`hsl(${Math.random()*360},
+100%,50%)`;
+
+confetti.style.animationDuration=
+(3+Math.random()*4)+"s";
+
+document.body.appendChild(
+confetti
+);
+
+setTimeout(()=>{
+
+confetti.remove();
+
+},7000);
+
+}
+
+}
+
+/* HEARTS */
+
+function createHeart(){
+
+const heart=
+document.createElement("div");
+
+heart.classList.add(
+"heart"
+);
+
+heart.innerHTML="❤️";
+
+heart.style.left=
+Math.random()*100+"vw";
+
+heart.style.fontSize=
+(20+Math.random()*25)+"px";
+
+document.body.appendChild(
+heart
+);
+
+setTimeout(()=>{
+
+heart.remove();
+
+},5000);
+
+}
+
+function createCake(){
+
+const cake=document.createElement("div");
+
+cake.classList.add("floating-cake");
+
+cake.innerHTML="🎂";
+
+cake.style.left=Math.random()*100+"vw";
+
+cake.style.fontSize=
+(25+Math.random()*25)+"px";
+
+document.body.appendChild(cake);
+
+setTimeout(()=>{
+cake.remove();
+},8000);
+
+}
+
+/* HEARTS ON FINAL PAGE */
+
+setInterval(()=>{
+
+createHeart();
+
+},800);
+
+setInterval(()=>{
+
+createCake();
+
+},1200);
+
+/* FINAL CELEBRATION */
+
+function celebrateForever(){
+
+createConfetti(600);
+
+for(let i=0;i<100;i++){
+
+setTimeout(()=>{
+
+createHeart();
+
+},i*80);
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
